@@ -15,13 +15,6 @@ pipeline {
             }
         }
 
-        stage('Load Image into Minikube') {
-            steps {
-                sh 'minikube image load vle7-dashboard:latest'
-                sh 'minikube image ls | grep vle7-dashboard'
-            }
-        }
-
         stage('Deploy to Kubernetes') {
             steps {
                 sh 'kubectl apply -f k8s/deployment.yaml'
