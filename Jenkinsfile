@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        APP_NAME = 'vle7-dashboard'
-        K8S_NAMESPACE = 'default'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -23,6 +18,7 @@ pipeline {
         stage('Load Image into Minikube') {
             steps {
                 sh 'minikube image load vle7-dashboard:latest'
+                sh 'minikube image ls | grep vle7-dashboard'
             }
         }
 
@@ -30,7 +26,7 @@ pipeline {
             steps {
                 sh 'kubectl apply -f k8s/deployment.yaml'
                 sh 'kubectl apply -f k8s/service.yaml'
-                sh 'kubectl rollout status deployment/vle7-dashboard --timeout=120s'
+                sh 'kubectl rollout status deployment/vle7-dashboard --timeout=180s'
             }
         }
 
