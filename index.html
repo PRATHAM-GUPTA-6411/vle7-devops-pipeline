@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VLE-7 DevOps Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101827;
+            color: #f1f5f9;
+            display: grid;
+            min-height: 100vh;
+            place-items: center;
+        }
+        main {
+            max-width: 650px;
+            margin: 24px;
+            padding: 36px;
+            background: #1e293b;
+            border-radius: 16px;
+            text-align: center;
+        }
+        h1 { color: #38bdf8; }
+        .status { color: #4ade80; font-weight: bold; }
+        li { margin: 12px 0; text-align: left; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>VLE-7 DevOps Dashboard</h1>
+        <p class="status">Application is running successfully</p>
+        <p>This application was deployed through a Jenkins CI/CD pipeline.</p>
+        <ul>
+            <li>Source control: GitHub</li>
+            <li>Build and automation: Jenkins</li>
+            <li>Containerization: Docker</li>
+            <li>Orchestration: Kubernetes</li>
+            <li>Monitoring: Prometheus and Grafana</li>
+        </ul>
+    </main>
+</body>
+</html>
