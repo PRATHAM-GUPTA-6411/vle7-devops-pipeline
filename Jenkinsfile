@@ -15,6 +15,19 @@ pipeline {
             }
         }
 
+        stage('Export Docker Image') {
+            steps {
+                sh 'docker save vle7-dashboard:latest -o /tmp/vle7-dashboard.tar'
+                sh 'test -s /tmp/vle7-dashboard.tar'
+            }
+        }
+
+        stage('Load Image into Minikube') {
+            steps {
+                sh 'sudo /usr/local/bin/vle7-load-image /tmp/vle7-dashboard.tar'
+            }
+        }
+
         stage('Deploy to Kubernetes') {
             steps {
                 sh 'kubectl apply -f k8s/deployment.yaml'
